@@ -1,0 +1,45 @@
+﻿@model List<Post>
+@{
+    int counter = 0;
+}
+<div class="container d-flex" style="justify-content:space-around">
+    <h1>Post:</h1>
+
+    <a class="btn btn-success" asp-action="create" asp-controller="post">Create</a>
+
+</div >
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">ImageUrl</th>
+                <th scope="col">Title</th>
+                <th scope="col">Desc</th>
+                <th scope="col">Button</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Post post in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td><img src="~/uploads/posts/@post.ImageUrl"></td>
+                    <td>@post.Title</td>
+                    <td>@post.Desc</td>
+                    <td>@post.Button</td>
+
+                    <td style="text-align:center">
+
+                        <a class="btn btn-primary" asp-action="Update" asp-controller="post" asp-route-id="@post.Id">Update</a>
+                        <hr class="sidebar-divider my-2">
+                        <a class="btn btn-danger" asp-action="delete" asp-controller="post" asp-route-id="@post.Id">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

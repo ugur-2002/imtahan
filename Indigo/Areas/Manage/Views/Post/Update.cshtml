@@ -1,0 +1,55 @@
+﻿@model Post
+
+<div class="container">
+    <h1 style="text-align:center">Create Post</h1>
+    <form method="post" asp-action="update" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Enter Title</label>
+            <input asp-for="Title" class="form-control" placeholder="Book Title">
+            <span asp-validation-for="Title" style="color:blue"></span>
+        </div>
+        <hr class="sidebar-divider my-0">
+
+        <div class="mb-3">
+            <label asp-for="Desc" class="form-label"> enter Description</label>
+            <textarea asp-for="Desc" class="form-control" placeholder="Description" rows="3"></textarea>
+            <span asp-validation-for="Desc" style="color:blue"></span>
+        </div>
+        <hr class="sidebar-divider my-0">
+
+        <div class="row"><div style="height: 30px"></div></div>
+
+        <div class="row">
+            <div class="col-6 ">
+                <label asp-for="Button" class="form-label">Button </label>
+                <input asp-for="Button" class="form-control" placeholder="Button">
+                <span asp-validation-for="Button" style="color:blue"></span>
+            </div>
+
+            <div class="col-6">
+                <label asp-for="ImageFile" class="form-label">Enter ImageFile</label>
+                <input asp-for="ImageFile" class="form-control" type="file">
+                <span asp-validation-for="ImageFile" style="color:blue"></span>
+
+
+
+                <div class="row"><div style="height: 10px"></div></div>
+
+                <div class="mb-3">
+                    <div style="width:200px">
+                        <img style="max-width:100%" src="~/uploads/posts/@Model?.ImageUrl" />
+                        <input type="hidden" asp-for="@Model.ImageUrl" />
+                        <p>The image can be hidden, don't worry about it.</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row"><div style="height: 30px"></div></div>
+
+            <div style="text-align:center"><button type="submit" class="btn btn-primary">Update</button></div>
+
+    </form>
+</div>
